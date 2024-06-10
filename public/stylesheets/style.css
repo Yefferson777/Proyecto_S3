@@ -1,12 +1,14 @@
+/* Bienvenidos al CSS de la pagina de inicio del proyecto. Aqui explicare como he hecho yo las variables */
+
+/* Por aqui solo hice arreglos generales en el html y body y para las direcciones de rutas
+tambien para el Main y footer */
+
 *{
-  box-sizing: border-box;
-  width: 100%;
-  padding: 5px;
+box-sizing: border-box;
+width: 100%;
+padding: 5px;
 margin: 0;
 padding: 0;
-font-family: "Cabin", sans-serif;
-font-optical-sizing: auto;
-
 }
 
 a{
@@ -18,14 +20,26 @@ a{
   color: black;
 }
 
+Main{
+  width: 100%;
+}
+
+footer{
+  width: 100%;
+  background-color: #cdb4db;
+}
+
+/*a partir de .flex hasta flex-Main es que se ordena el 70% del contenido de la pagina  */
+
 .flex{
   display: flex;
 }
 
 .flex-Main{
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+    flex-direction: row;
+    margin-right: 70px;
+    align-items: center;
 }
 
 .tittle{
@@ -39,9 +53,7 @@ a{
   padding: 10px;
 }
 
-Main{
-  width: 100%;
-}
+
 
 .contenido{
   display: flex;
@@ -51,7 +63,7 @@ Main{
   font-style: italic;
   margin-top: 70px;
   text-align: center;
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 .center{
   margin-top: 60px;
@@ -64,10 +76,7 @@ Main{
   border-radius: 50%;
 }
 
-footer{
-  width: 100%;
-  background-color: #cdb4db;
-}
+
 
 .ir_catalogo{
   display: flex;
@@ -82,7 +91,15 @@ footer{
   justify-content: space-around;
   padding: 25px;
   margin-top: 222px;
+  font-family: "Cabin", sans-serif;
+  font-optical-sizing: auto;
 }
-/* #cdb4db purle
+
+
+
+
+/*  Deje los colores que usamos por si las moscas y para ahorrar tiempo solo dando Ctr + C
+
+#cdb4db purle
 #ffc8dd pink
 #bde0fe blue */

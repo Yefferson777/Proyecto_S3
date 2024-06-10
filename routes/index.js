@@ -6,8 +6,12 @@ router.get('/', function(req, res, next) {
   res.render('inicio', { title: 'Express' });
 });
 
-router.get('/views/catalogo.ejs', function(req, res,){
-  res.render('catalogo')
+router.get('/views/catalogo.ejs', function(req, res, next){
+  res.render('catalogo.ejs')
 });
+
+router.get('/views/citas.ejs', function(req, res, next){
+  res.render('citas.ejs')
+})
 
 module.exports = router;
