@@ -1,0 +1,88 @@
+*{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+margin: 0;
+padding: 0;
+font-family: "Cabin", sans-serif;
+font-optical-sizing: auto;
+
+}
+
+a{
+  text-decoration: none;
+  font-family: "Cabin", sans-serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-size: x-large;
+  color: black;
+}
+
+.flex{
+  display: flex;
+}
+
+.flex-Main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.tittle{
+  font-size: 20px;
+}
+
+.contenedor{
+  background-color: #cdb4db;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+Main{
+  width: 100%;
+}
+
+.contenido{
+  display: flex;
+  font-family: "Cabin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+  margin-top: 70px;
+  text-align: center;
+  flex-direction: row-reverse;
+}
+.center{
+  margin-top: 60px;
+  font-size: 30px;
+  text-align: -webkit-center;
+}
+
+.aurelis{
+  width: 30%;
+  border-radius: 50%;
+}
+
+footer{
+  width: 100%;
+  background-color: #cdb4db;
+}
+
+.ir_catalogo{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 80px;
+  text-decoration: none;
+}
+
+.contenedor2{
+  background-color: #cdb4db;
+  display: flex;
+  justify-content: space-around;
+  padding: 25px;
+  margin-top: 222px;
+}
+/* #cdb4db purle
+#ffc8dd pink
+#bde0fe blue */
