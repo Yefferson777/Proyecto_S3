@@ -1,9 +1,19 @@
+/* aqui quise dividir los css para cada pagina */
+
 *{
     box-sizing: border-box;
     width: 100%;
     padding: 5px;
     margin: 0;
     padding: 0;
+    
+  font-family: "Cabin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+  color: white;
+ 
+ 
     }
     
 a{
@@ -12,7 +22,7 @@ a{
     font-optical-sizing: auto;
     font-style: italic;
     font-size: x-large;
-     color: black;
+     color: white;
     }
 
 main{
@@ -25,14 +35,20 @@ h2{
     font-family: "Cabin", sans-serif;
     font-optical-sizing: auto;
     font-style: italic;
+    background-color: #ffc8dd;
+    width: 40%;
+    margin-left: 32%;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
 }
 
 img{
     width: 15%;
-    border: 8px #bde0fe solid;
-    border-radius: 41px;
+    height: 0%;
+    border-radius: 30px;
 }
-    
+
 .flex{
     display: flex;
     }
@@ -43,6 +59,12 @@ img{
     justify-content: space-around;
     padding: 10px;
       }
+
+.title{
+     font-size: 28px;
+     margin-left: 55px;
+     letter-spacing: 2.5px;
+}
 
 .flex-Main{
     display: flex;
@@ -66,6 +88,10 @@ img{
     border-radius: 50px;
     background: #bde0fe;
     
+}
+
+.orders{
+    height: 262px;
 }
 
 
