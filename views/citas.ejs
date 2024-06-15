@@ -3,9 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/style_citas.css' />
+
+    <title>Citas</title>
 </head>
 <body>
-   en construcción :p 
+
+    <header >
+        <section class="contenedor">
+          <a class="title" href="/">AURELIS</a>
+            <div class="flex">
+              <a href="/views/catalogo.ejs">Catalógo</a>
+              <a href="/views/citas.ejs">Agendar citas</a>
+            </div>
+        </section>
+    </header>
+
+    <Main>
+        <section>
+            <h1 class="text_citas">Reserva y disfruta de un acabado profesional</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Precio</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Manicure</td>
+                        <td>3$</td>
+                        <td>
+                            <input type="checkbox" id="checkbox-id" name="checkbox-name" value="checkbox-value"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pedicure</td>
+                        <td>5$</td>
+                        <td>
+                            <input type="checkbox" id="checkbox-id" name="checkbox-name" value="checkbox-value"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Acrílico</td>
+                        <td>8$</td>
+                        <td>
+                            <input type="checkbox" id="checkbox-id" name="checkbox-name" value="checkbox-value"/>
+                        </td>
+                    </tr>
+                    <!-- <button>Agendar</button> -->
+                </tbody>
+            </table>
+
+        </section>
+
+    </Main>
+
+    <footer class="contenedor2">
+
+        <section>
+          <div class="redes">
+            <img src="/public/images/facebook.svg" height="45">
+            <img src="/public/images/instagram.svg" height="45" >
+            <img src="/public/images/tik-tok.svg"  height="45">
+          </div>  
+       </section>
+  
+    </footer>
+
 </body>
 </html>
