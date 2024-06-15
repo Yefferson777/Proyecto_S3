@@ -13,6 +13,10 @@ router.get('/views/catalogo.ejs', function(req, res, next){
 router.get('/views/citas.ejs', function(req, res, next){
   res.render('citas.ejs')
 })
+
+router.get('/views/login.ejs', function(req, res, next){
+  res.render('login.ejs')
+})
   
 console.log("el puerto es 3000")
 
