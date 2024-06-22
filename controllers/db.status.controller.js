@@ -19,7 +19,7 @@ const getStatus= async(req, res) =>{
             if (name == undefined ){
                 res.status(400).json({ message: "Bad Request. Please fill all field." });
             }
-            const status={ name, price_uni, status};
+            const status={ name,};
             const connection = await getConnection();
             const result = await connection.query("INSERT INTO status SET ?", status);
             res.json(result);
@@ -41,7 +41,7 @@ const getStatus= async(req, res) =>{
         
                 const status = { name };
                 const connection = await getConnection();
-                const result = await connection.query("UPDATE status SET ? WHERE status_id = ?", [id]);
+                const result = await connection.query("UPDATE status SET ? WHERE status_id = ?", [status, id]);
                 res.json(result);
     
             } catch (error) {
