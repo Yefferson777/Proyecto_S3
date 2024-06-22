@@ -1,0 +1,100 @@
+/* aqui quise dividir los css para cada pagina */
+
+*{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    margin: 0;
+    padding: 0;
+    
+  font-family: "Cabin", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+  color: white;
+ 
+ 
+    }
+    
+a{
+    text-decoration: none;
+    font-family: "Cabin", sans-serif;
+    font-optical-sizing: auto;
+    font-style: italic;
+    font-size: x-large;
+     color: white;
+    }
+
+main{
+    margin-top: 120px;
+}
+
+h2{
+    margin-bottom: 60px;
+    justify-content: space-around;
+    font-family: "Cabin", sans-serif;
+    font-optical-sizing: auto;
+    font-style: italic;
+    background-color: #ffc8dd;
+    width: 40%;
+    margin-left: 32%;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+img{
+    width: 15%;
+    height: 0%;
+    border-radius: 30px;
+}
+
+.flex{
+    display: flex;
+    }
+    
+.contenedor{
+    background-color: #cdb4db;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+      }
+
+.title{
+     font-size: 28px;
+     margin-left: 55px;
+     letter-spacing: 2.5px;
+}
+
+.flex-Main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    }
+
+.flex-Main2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+    
+.nose{
+    margin-top: 85px;
+    text-align: center;
+    border: 10px #bde0fe solid;
+    width: 30%;
+    margin-left: 35%;
+    border-radius: 50px;
+    background: #bde0fe;
+    
+}
+
+.orders{
+    height: 262px;
+}
+
+
+/* #cdb4db purle
+#ffc8dd pink
+#bde0fe blue */
