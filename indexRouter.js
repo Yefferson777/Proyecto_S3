@@ -29,7 +29,7 @@ router.post('/login', (req, res) => {
   const user = req.body.usuario;
   const pass = req.body.clave;
 
-  if (user == process.env.USER && pass == process.env.PASS){
+  if (user == process.env.USERS && pass == process.env.PASS){
     res.redirect("/admin");
   } else {
     res.redirect("/login");
