@@ -9,8 +9,6 @@ router.get("/", PagosController.getPagos);
 router.post("/", PagosController.addPagos);
 router.put("/:id", PagosController.updatePagos);
 router.delete("/:id", PagosController.deletePagos);
-
-
 router.post("/:id", PagosController.addPagos);
 
 export default router;
