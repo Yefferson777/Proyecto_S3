@@ -4,5 +4,6 @@ import { methods as PagosController } from "../controllers/db.pagos.controller.j
 const router = Router();
 
 router.get("/", PagosController.getPagos);
+router.post("/:id", PagosController.addPagos);
 
 export default router;
