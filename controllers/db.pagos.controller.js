@@ -71,7 +71,7 @@ const deletePagos = async (req, res) => {
 
 export const methods = {
 getPagos,
-getPagos,
+getPago,
 addPagos,
 updatePagos,
 deletePagos
