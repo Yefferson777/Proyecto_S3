@@ -1,18 +1,40 @@
 var express = require('express');
 var router = express.Router();
-
+require("dotenv").config()
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('inicio', { title: 'Express' });
 });
 
-router.get('/views/catalogo.ejs', function(req, res, next){
-  res.render('catalogo.ejs')
+router.get('/catalogo', function(req, res, next){
+  res.render('catalogo');
 });
 
-router.get('/views/citas.ejs', function(req, res, next){
-  res.render('citas.ejs')
-})
+router.get('/citas', function(req, res, next){
+  res.render('citas');
+});
+
+router.get('/admin', function(req, res, next){
+  res.render('admin');
+});
+
+router.get('/login', function(req, res, next){
+  res.render('login');
+});
+
+router.post('/login', function(req, res, next){
+  const user = req.body.usuario;
+  const pass = req.body.clave;
+
+  if (user == process.env.USER && pass == process.env.PASS){
+    res.redirect("/admin")
+  }else{
+    res.redirect("/login")
+  }
+
+});
+
+
   
 console.log("el puerto es 3000")
 

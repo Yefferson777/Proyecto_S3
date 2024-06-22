@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+/*   --------------------MENU HAMBURGUESA INICIO  ------------------------          */
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #cdb4db;
+}
+
+.logo{
+    max-width: 10rem;
+}
+
+.nav-list{
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+
+}
+.nav-list li{
+    margin-right: 0;
+    margin-left: 0;
+    padding: 2rem;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.nav-list li a{
+    text-decoration: none;
+    color: black;
+    
+}
+
+.nav-list li:hover{
+    background-color: #a38daf;
+}
+
+.abrir-menu,
+.cerrar-menu{
+    display: none;
+}
+
+
+@media  screen and (max-width: 720px) {
+    .abrir-menu,
+    .cerrar-menu{
+        display: block;
+        border: 0;
+        font-size: 2.2rem;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .nav{
+        opacity: 0;
+        visibility: hidden;
+    }
+
+
+    .nav{
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 0.2rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #cdb4db;
+        padding: 2rem;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.171)
+    }
+
+    .nav.visible{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-list{
+        flex-direction: column;
+        align-items: end;
+        margin-top: 2.5rem;
+    }
+
+    .nav-list li{
+        margin-bottom: 0.2rem;
+        margin-top: 0.2rem;
+    }
+    
+}
+
+/*   --------------------MENU HAMBURGUESA FINN  ------------------------          */
+
+
+body{
+    background: #EAEBEF;
+}

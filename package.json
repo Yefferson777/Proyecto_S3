@@ -1,16 +1,23 @@
 {
-  "name": "sistema-iii",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
-  "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "ejs": "~2.6.1",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
-  }
+    "name": "simple-nodejs-api",
+    "version": "1.0.0",
+    "description": "my first api with nodejs",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon src"
+    },
+    "dependencies": {
+        "cookie-parser": "^1.4.6",
+        "debug": "^4.3.5",
+        "dotenv": "^16.4.5",
+        "ejs": "^3.1.10",
+        "express": "^4.19.2",
+        "http-errors": "^2.0.0",
+        "morgan": "^1.10.0",
+        "promise-mysql": "^5.2.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.3"
+    }
 }
