@@ -1,10 +1,10 @@
 import { getConnection } from "./../database/database.js";
 
-const getPagos= async(req, res) =>{
+const getUser= async(req, res) =>{
 
     try{
         const connection= await getConnection();
-        const result=await connection.query("SELECT * FROM pagos");
+        const result=await connection.query("SELECT * FROM user");
         res.json(result);
             }catch(error) {
             res.status(500);
@@ -13,15 +13,15 @@ const getPagos= async(req, res) =>{
     
     };
 
-    const addPagos= async(req, res) =>{
+    const addUser= async(req, res) =>{
         try{
-            const { metodo, name } = req.body;
-            if (metodo == undefined || name == undefined ){
+            const { nombre, apellido, is_admin, is_active, create_at } = req.body;
+            if (nombre == undefined, apellido == undefined, is_admin == undefined, is_active == undefined, create_at == undefined){
                 res.status(400).json({ message: "Bad Request. Please fill all field." });
             }
-            const pagos={ metodo, name};
+            const user={ nombre, apellido, is_admin, is_active, create_at};
             const connection = await getConnection();
-            const result = await connection.query("INSERT INTO pagos SET ?", pagos);
+            const result = await connection.query("INSERT INTO user SET ?", user);
             res.json(result);
         } catch(error) {
                 res.status(500);
@@ -30,18 +30,18 @@ const getPagos= async(req, res) =>{
         
         };
 
-        const updatePagos = async (req, res) => {
+        const updateUser = async (req, res) => {
             try {
                 const { id } = req.params;
-                const { metodo, name } = req.body;
+                const { nombre, apellido, is_admin, is_active, create_at } = req.body;
         
-                if (metodo === undefined || name === undefined) {
+                if (nombre === undefined, apellido == undefined, is_admin == undefined, is_active == undefined, create_at == undefined ) {
                     res.status(400).json({ message: "Bad Request. Please fill all field." });
                 }
         
-                const pagos = { metodo, name };
+                const user = { nombre };
                 const connection = await getConnection();
-                const result = await connection.query("UPDATE pagos SET ? WHERE pagos_id = ?", [id]);
+                const result = await connection.query("UPDATE user SET ? WHERE user_id = ?", [id]);
                 res.json(result);
     
             } catch (error) {
@@ -50,12 +50,12 @@ const getPagos= async(req, res) =>{
             }
         };
 
-        const deletePagos= async(req, res) =>{
+        const deleteUser= async(req, res) =>{
 
             try{
                 const { id } = req.params;
                 const connection= await getConnection();
-                const result=await connection.query("DELETE FROM pagos WHERE pagos_id = ?", id);
+                const result=await connection.query("DELETE FROM user WHERE user_id = ?", id);
                 res.json(result);
                     }catch(error) {
                     res.status(500);
@@ -65,8 +65,8 @@ const getPagos= async(req, res) =>{
             };
 
     export const methods ={
-        getPagos,
-        addPagos,
-        updatePagos,
-        deletePagos
+        getUser,
+        addUser,
+        updateUser,
+        deleteUser
         };

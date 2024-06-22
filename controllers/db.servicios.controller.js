@@ -1,10 +1,10 @@
 import { getConnection } from "./../database/database.js";
 
-const getPagos= async(req, res) =>{
+const getServicio= async(req, res) =>{
 
     try{
         const connection= await getConnection();
-        const result=await connection.query("SELECT * FROM pagos");
+        const result=await connection.query("SELECT * FROM servicio");
         res.json(result);
             }catch(error) {
             res.status(500);
@@ -13,15 +13,15 @@ const getPagos= async(req, res) =>{
     
     };
 
-    const addPagos= async(req, res) =>{
+    const addServicio= async(req, res) =>{
         try{
-            const { metodo, name } = req.body;
+            const { name, price_uni, status } = req.body;
             if (metodo == undefined || name == undefined ){
                 res.status(400).json({ message: "Bad Request. Please fill all field." });
             }
-            const pagos={ metodo, name};
+            const servicio={ name, price_uni, status};
             const connection = await getConnection();
-            const result = await connection.query("INSERT INTO pagos SET ?", pagos);
+            const result = await connection.query("INSERT INTO servicios SET ?", servicio);
             res.json(result);
         } catch(error) {
                 res.status(500);
@@ -30,18 +30,18 @@ const getPagos= async(req, res) =>{
         
         };
 
-        const updatePagos = async (req, res) => {
+        const updateServicio = async (req, res) => {
             try {
                 const { id } = req.params;
-                const { metodo, name } = req.body;
+                const { name, price_uni, status } = req.body;
         
-                if (metodo === undefined || name === undefined) {
+                if (name === undefined || price_uni === undefined, status === undefined) {
                     res.status(400).json({ message: "Bad Request. Please fill all field." });
                 }
         
-                const pagos = { metodo, name };
+                const servicio = { name, price_uni, status };
                 const connection = await getConnection();
-                const result = await connection.query("UPDATE pagos SET ? WHERE pagos_id = ?", [id]);
+                const result = await connection.query("UPDATE servicios SET ? WHERE servicio_id = ?", [id]);
                 res.json(result);
     
             } catch (error) {
@@ -50,12 +50,12 @@ const getPagos= async(req, res) =>{
             }
         };
 
-        const deletePagos= async(req, res) =>{
+        const deleteServicio= async(req, res) =>{
 
             try{
                 const { id } = req.params;
                 const connection= await getConnection();
-                const result=await connection.query("DELETE FROM pagos WHERE pagos_id = ?", id);
+                const result=await connection.query("DELETE FROM servicios WHERE servicio_id = ?", id);
                 res.json(result);
                     }catch(error) {
                     res.status(500);
@@ -65,8 +65,8 @@ const getPagos= async(req, res) =>{
             };
 
     export const methods ={
-        getPagos,
-        addPagos,
-        updatePagos,
-        deletePagos
+        getServicio,
+        addServicio,
+        updateServicio,
+        deleteServicio
         };

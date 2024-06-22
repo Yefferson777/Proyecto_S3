@@ -5,6 +5,9 @@ import { fileURLToPath } from "url";
 import indexRouter from "./indexRouter.js";
 import dbclients from "./routes/db.clients.routes.js";
 import dbpagos from "./routes/db.pagos.routes.js";
+import dbservicios from "./routes/db.servicios.route.js";
+import dbstatus from "./routes/db.status.routes.js";
+import dbuser from "./routes/db.user.routes.js"
 
 // Obtén la ruta del directorio actual
 const __filename = fileURLToPath(import.meta.url);
@@ -26,5 +29,7 @@ app.use(morgan("dev"));
 app.use('/', indexRouter);
 app.use("/api/clients", dbclients);
 app.use("/api/pagos", dbpagos);
-
+app.use("/api/servicios", dbservicios);
+app.use("/api/status", dbstatus)
+app.use("/api/user", dbuser)
 export default app;
