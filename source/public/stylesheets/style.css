@@ -1,0 +1,122 @@
+/* Bienvenidos al CSS de la pagina de inicio del proyecto. Aqui explicare como he hecho yo las variables */
+
+/* Por aqui solo hice arreglos generales en el html y body y para las direcciones de rutas
+tambien para el Main y footer */
+
+*{
+box-sizing: border-box;
+width: 100%;
+margin: 0;
+padding: 0;
+font-family: "Cabin", sans-serif;
+font-optical-sizing: auto;
+font-weight: 700;
+font-style: italic;
+color: white;
+}
+
+a{
+  text-decoration: none;
+  font-family: "Cabin", sans-serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-size: x-large;
+  color: white;
+}
+
+Main{
+  width: 100%;
+}
+
+footer{
+  width: 100%;
+  background-color: #cdb4db;
+  padding: 15px;
+}
+
+
+  
+
+
+/*a partir de .flex hasta flex-Main es que se ordena el 70% del contenido de la pagina  */
+
+.flex{
+  display: flex;
+}
+
+.flex-Main{
+  display: flex;
+    flex-direction: row;
+    margin-right: 70px;
+    align-items: center;
+}
+
+.flex-bottom{
+  display: flex;
+  background-color: #bde0fe;
+  padding: 77px;
+  justify-content: space-between
+}
+
+.title{
+  font-size: 28px;
+  margin-left: 55px;
+  letter-spacing: 2.5px;
+}
+
+.contenedor{
+  background-color: #cdb4db;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+
+
+.contenido{
+  display: flex;
+  
+  text-align: center;
+  flex-direction: row;
+  background-color: #bde0fe;
+}
+.center{
+  font-size: 30px;
+  text-align: -webkit-center;
+  border-radius: 19px;
+  /* border: 5px #ffc8dd solid;
+  background-color: #ffc8dd; */
+  margin-left: 18px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.aurelis{
+  width: 30%;
+  
+}
+
+
+
+.ir_catalogo{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 80px;
+  width: 30%;
+  border: 5px #ffc8dd solid;
+  margin-left: 35%;
+  border-radius: 25px;
+  background: #ffc8dd;
+  text-decoration: underline;
+}
+
+.redes{
+  display: flex;
+  width: 20%;
+}
+
+/*  Deje los colores que usamos por si las moscas y para ahorrar tiempo solo dando Ctr + C
+
+#cdb4db purle
+#ffc8dd pink
+#bde0fe blue */
