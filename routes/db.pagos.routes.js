@@ -3,7 +3,14 @@ import { methods as PagosController } from "../controllers/db.pagos.controller.j
 
 const router = Router();
 
+
+
 router.get("/", PagosController.getPagos);
+router.post("/", PagosController.addPagos);
+router.put("/:id", PagosController.updatePagos);
+router.delete("/:id", PagosController.deletePagos);
+
+
 router.post("/:id", PagosController.addPagos);
 
 export default router;
