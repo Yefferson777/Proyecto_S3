@@ -4,8 +4,8 @@ import { methods as ServiciosController } from "../controllers/db.servicios.cont
 const router = Router()
 
 router.get("/", ServiciosController.getServicio);
-router.post("/", ServiciosController.addServicio);
-router.put("/:id", ServiciosController.updateServicio);
-router.delete("/:id", ServiciosController.deleteServicio);
+router.post("/", ServiciosController.addServicios);
+router.put("/:id", ServiciosController.updateServicios);
+router.delete("/:id", ServiciosController.deleteServicios);
 
 export default router;

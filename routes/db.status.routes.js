@@ -6,6 +6,7 @@ const router = Router();
 
 
 router.get("/", StatusController.getStatus);
+router.get("/:id", StatusController.getState);
 router.post("/", StatusController.addStatus);
 router.put("/:id", StatusController.updateStatus);
 router.delete("/:id", StatusController.deleteStatus);
