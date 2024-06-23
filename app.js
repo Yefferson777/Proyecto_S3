@@ -15,6 +15,9 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+//Static
+app.use(express.static(path.join(__dirname, "public")));
+
 
 // Settings
 app.set("port",  4000);

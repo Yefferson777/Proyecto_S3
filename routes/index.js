@@ -26,7 +26,7 @@ router.post('/login', function(req, res, next){
   const user = req.body.usuario;
   const pass = req.body.clave;
 
-  if (user == process.env.USER && pass == process.env.PASS){
+  if (user == process.env.USERS && pass == process.env.PASS){
     res.redirect("/admin")
   }else{
     res.redirect("/login")
@@ -38,4 +38,4 @@ router.post('/login', function(req, res, next){
   
 console.log("el puerto es 3000")
 
-module.exports = router;
+module.exports = router;*/
