@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Cabin", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: italic;
+    }
+    
+a{
+    text-decoration: none;
+    font-family: "Cabin", sans-serif;
+    font-optical-sizing: auto;
+    font-style: italic;
+    font-size: x-large;
+    color: white;
+}
+
+main{
+    width: 100%;
+}
+
+.text_citas{
+    margin: 50px;
+
+
+}
+
+table {
+    /* Bordes para la tabla */
+    margin: auto;
+    width: 60%;
+    border-collapse: collapse; /* Combinar bordes de celdas adyacentes */
+    border: 1px solid #9c9898;
+    /* margin: 0 auto; Centrar la tabla horizontalmente */
+}
+
+th {
+    background-color: pink;
+    padding: 15px;
+}
+
+th, td {
+    /* Bordes para las celdas */
+    border: 1px solid #ccc; /* Bordes grises para las celdas */
+    padding: 5px; /* Espacio entre el contenido y los bordes de las celdas */
+  }
+
+.contenedor{
+    background-color: #cdb4db;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+footer{
+    width: 100%;
+    background-color: #cdb4db;
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+}
+
+.flex{
+    display: flex;
+}
+
+
+.redes{
+    display: flex;
+    width: 20%;
+}
+
+
