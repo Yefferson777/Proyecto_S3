@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon *"
+    "dev": "nodemon --ignore README.md"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

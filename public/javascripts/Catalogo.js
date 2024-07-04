@@ -1,4 +1,4 @@
-const apiurl = 'http://localhost:4000/api/servicios';
+const apiurl = 'http://172.0.0.1:4000/api/servicios';
 
 const getServicios = async () => {
     try {
