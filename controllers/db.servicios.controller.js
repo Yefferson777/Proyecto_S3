@@ -6,9 +6,11 @@ const getServicios = async (req, res) => {
         connection = await getConnection();
         const result = await connection.query("SELECT * FROM servicio");
         res.json(result);
+   
     } catch (error) {
         res.status(500).send(error.message);
     } 
+
 };
 
 const getServicio = async (req, res) => {
@@ -32,7 +34,7 @@ const addServicios = async (req, res) => {
         }
         const servicios = { name, price_uni, status};
         connection = await getConnection();
-        const result = await connection.query("INSERT INTO servicio SET ?", pagos);
+        const result = await connection.query("INSERT INTO servicio SET ?", servicios);
         res.json(result);
     } catch (error) {
         res.status(500).send(error.message);

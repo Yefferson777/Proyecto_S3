@@ -5,9 +5,10 @@ import { fileURLToPath } from "url";
 import indexRouter from "./indexRouter.js";
 import dbclients from "./routes/db.clients.routes.js";
 import dbpagos from "./routes/db.pagos.routes.js";
-import dbservicios from "./routes/db.servicios.route.js";
+import dbservicios from "./routes/db.servicios.routes.js";
 import dbstatus from "./routes/db.status.routes.js";
 import dbuser from "./routes/db.user.routes.js"
+
 
 // Obtén la ruta del directorio actual
 const __filename = fileURLToPath(import.meta.url);
