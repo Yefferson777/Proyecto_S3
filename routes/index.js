@@ -18,6 +18,10 @@ router.get('/admin', function(req, res, next){
   res.render('admin');
 });
 
+router.get('/calendario', function(req, res, next){
+  res.render('calendario');
+});
+
 router.get('/login', function(req, res, next){
   res.render('login');
 });
