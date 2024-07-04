@@ -9,16 +9,24 @@
     <style>
         body, h1, h2, h3, h4, h5, h6, p, a, li, span, div,td, label {
            color: #000 !important;
-}
+           background-color: rgb(235, 255, 255);
+}       
+        .table-top {
+            background-color: #cdb4db !important;
+        }
+        .modal-fondo {
+            background-color: #eeddeec1;
+        }
+        
     </style>
                   
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Reserva y disfruta de un acabado profesional</h1>
+        <h2 class="text-center mb-4">Reserva y disfruta de un acabado profesional</h2>
         <form id="serviceForm">
             <table class="table table-bordered">
-                <thead class="thead-dark">
+                <thead class="table-top">
                     <tr>
                         <th>Servicio</th>
                         <th>Precio</th>
@@ -36,7 +44,7 @@
     </div>
 
     <!-- Modal para reservar -->
-    <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
+    <div class="modal fade modal-fondo" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -48,7 +56,7 @@
                 <div class="modal-body">
                     <form id="reserveForm">
                         <div class="form-group">
-                            <label for="nombre">Nombre</label>
+                            <label for="nombre">Nombre y Apellido</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" required>
                         </div>
                         <div class="form-group">
@@ -59,7 +67,7 @@
                             <label for="hora">Hora</label>
                             <input type="time" class="form-control" id="hora" name="hora" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Reservar</button>
+                        <button type="submit" class="btn btn-primary" id="guardar-comprobante" >Reservar</button>
                     </form>
                 </div>
             </div>
