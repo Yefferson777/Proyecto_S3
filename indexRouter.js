@@ -13,6 +13,10 @@ router.get('/catalogo', (req, res) => {
   res.render('catalogo.ejs');
 });
 
+router.get('/test', (req, res) => {
+  res.render('test.ejs');
+});
+
 router.get('/citas', (req, res) => {
   res.render('citas');
 });
