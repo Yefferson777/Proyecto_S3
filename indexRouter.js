@@ -17,6 +17,10 @@ router.get('/test', (req, res) => {
   res.render('test.ejs');
 });
 
+router.get('/services', (req, res) => {
+  res.render('services.ejs');
+});
+
 router.get('/citas', (req, res) => {
   res.render('citas');
 });
@@ -27,6 +31,10 @@ router.get('/admin', (req, res) => {
 
 router.get('/login', (req, res) => {
   res.render('login');
+});
+
+router.get('/adminser', (req, res) => {
+  res.render('adminser.ejs');
 });
 
 router.post('/login', (req, res) => {

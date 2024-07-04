@@ -8,6 +8,7 @@ import dbpagos from "./routes/db.pagos.routes.js";
 import dbservicios from "./routes/db.servicios.routes.js";
 import dbstatus from "./routes/db.status.routes.js";
 import dbuser from "./routes/db.user.routes.js";
+import dbcita from "./routes/db.citas.routes.js";
 
 // Obtén la ruta del directorio actual
 const __filename = fileURLToPath(import.meta.url);
@@ -35,5 +36,6 @@ app.use("/api/pagos", dbpagos);
 app.use("/api/servicios", dbservicios); // No es necesario añadir multer aquí
 app.use("/api/status", dbstatus);
 app.use("/api/user", dbuser);
+app.use("api/cita", dbcita);
 
 export default app;
