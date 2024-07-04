@@ -4,6 +4,59 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+/* Estilos para eliminar el fondo de las cards y hacer el texto visible */
+.card {
+  background-color: transparent;
+  border: none;
+}
+
+.card-body {
+  color: #000; /* Asegúrate de que el texto sea de color oscuro */
+}
+
+/* Otros estilos adicionales */
+/* Eliminar el fondo de las cards */
+.card {
+  background-color: transparent;
+  border: none;
+}
+
+/* Hacer el texto de las cards visible */
+.card-body {
+  color: #000;
+}
+
+/* Centrar el título y el botón */
+.container {
+  text-align: center;
+}
+
+/* Estilo para el botón "Agregar Servicio" */
+.btn-success {
+  margin-bottom: 20px;
+}
+
+/* Otros estilos adicionales */
+
+
+.flex-Main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-list a {
+  color: #000;
+  text-decoration: none;
+}
+
+.nav-list a:hover {
+  text-decoration: underline;
+}
+
+
+
+
 /*   --------------------MENU HAMBURGUESA INICIO  ------------------------          */
 header{
     display: flex;
@@ -158,7 +211,7 @@ footer  {
     display: flex;
   
     border-radius: 10px;
-    background-color: #373c4f;
+    background-color: #e1bdff;
   }
   .left {
     width: 60%;

@@ -3,75 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/stylesheets/style_citas.css' />
-
-    <title>Citas</title>
+    <title>Reserva de Servicios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style>
+        body, h1, h2, h3, h4, h5, h6, p, a, li, span, div,td, label {
+           color: #000 !important;
+}
+    </style>
+                  
 </head>
 <body>
-    <!-- Hay que agregar el header al template -->
-    <header >
-        <section class="contenedor">
-          <a class="title" href="/">AURELIS</a>
-            <div class="flex">
-              <a href="/catalogo">Catalógo</a>
-              <a href="/citas">Agendar citas</a>
-            </div>
-        </section>
-    </header>
-
-    <Main>
-        <section>
-            <h1 class="text_citas">Reserva y disfruta de un acabado profesional</h1>
-
-            <table>
-                <thead>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Reserva y disfruta de un acabado profesional</h1>
+        <form id="serviceForm">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
                     <tr>
                         <th>Servicio</th>
                         <th>Precio</th>
-                        <th></th>
+                        <th>Seleccionar</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Manicure</td>
-                        <td>3$</td>
-                        <td>
-                            <input type="checkbox" id="checkbox-id" name="checkbox-name" value="checkbox-value"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Pedicure</td>
-                        <td>5$</td>
-                        <td>
-                            <input type="checkbox" id="checkbox-id" name="checkbox-name" value="checkbox-value"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Acrílico</td>
-                        <td>8$</td>
-                        <td>
-                            <input type="checkbox" id="checkbox-id" name="checkbox-name" value="checkbox-value"/>
-                        </td>
-                    </tr>
-                    <!-- <button>Agendar</button> -->
+                <tbody id="serviceTableBody">
+                    <!-- Las filas de servicios se añadirán aquí -->
                 </tbody>
             </table>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary" id="openModal">Reservar</button>
+            </div>
+        </form>
+    </div>
 
-        </section>
+    <!-- Modal para reservar -->
+    <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reserveModalLabel">Reservar Servicios</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="reserveForm">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha">Fecha</label>
+                            <input type="date" class="form-control" id="fecha" name="fecha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hora">Hora</label>
+                            <input type="time" class="form-control" id="hora" name="hora" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Reservar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    </Main>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const apiurl = 'http://localhost:4000/api/servicios';
+            const serviceTableBody = document.getElementById('serviceTableBody');
+            const serviceForm = document.getElementById('serviceForm');
+            const reserveForm = document.getElementById('reserveForm');
 
-    <footer class="contenedor2">
+            // Cargar servicios
+            const loadServices = () => {
+                fetch(apiurl)
+                    .then(response => response.json())
+                    .then(data => {
+                        serviceTableBody.innerHTML = '';
+                        data.forEach(servicio => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${servicio.name}</td>
+                                <td>${servicio.price_uni}</td>
+                                <td><input type="checkbox" name="servicios" value="${servicio.servicio_id}" data-price="${servicio.price_uni}"></td>
+                            `;
+                            serviceTableBody.appendChild(row);
+                        });
+                    });
+            };
 
-        <section>
-          <div class="redes">
-            <img src="/public/images/facebook.svg" height="45">
-            <img src="/public/images/instagram.svg" height="45" >
-            <img src="/public/images/tik-tok.svg"  height="45">
-          </div>  
-       </section>
-  
-    </footer>
+            loadServices();
 
+            // Abrir modal de reserva
+            document.getElementById('openModal').addEventListener('click', () => {
+                $('#reserveModal').modal('show');
+            });
+
+            // Enviar formulario de reserva
+            reserveForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(reserveForm);
+                const servicios = Array.from(serviceForm.elements['servicios'])
+                                       .filter(checkbox => checkbox.checked)
+                                       .map(checkbox => ({
+                                           id: checkbox.value,
+                                           price: checkbox.getAttribute('data-price')
+                                       }));
+
+                if (servicios.length === 0) {
+                    alert('Seleccione al menos un servicio.');
+                    return;
+                }
+
+                formData.append('servicios', JSON.stringify(servicios));
+
+                try {
+                    const response = await fetch('http://localhost:4000/api/cita', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+                    $('#reserveModal').modal('hide');
+                    alert('Reserva realizada con éxito.');
+                    reserveForm.reset();
+                    serviceForm.reset();
+                } catch (error) {
+                    console.error('Error:', error);
+                } 
+            });
+        });
+    </script>
 </body>
 </html>

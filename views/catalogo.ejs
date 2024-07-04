@@ -1,55 +1,63 @@
-<!-- Bienvenidos al Catalógo, en esta parte estoy estructurandola poco a poco, se que estilo darle. solo 
-pediría opiniones con comentarios en el script o en el grupo por favor -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel='stylesheet' href='/stylesheets/style_catalogo.css' />
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style_catalogo.css">
+    <style>
+        .card-img-top {
+            height: 200px; /* Ajusta esta altura según tus necesidades */
+            object-fit: cover; /* Mantiene la proporción de la imagen y llena el contenedor */
+        }
+        .modal-body img {
+            width: 100%; /* Asegura que la imagen ocupe el ancho completo del modal */
+            height: auto; /* Mantiene las proporciones de la imagen */
+        }
+    </style>
     <title>Catalógo</title>
 </head>
 <body>
-    <header >
-        <section class="contenedor">
-          <a class="title" href="/">AURELIS</a>
-            <div class="flex">
-              <a href="/catalogo">Catalógo</a>
-              <a href="/citas">Agendar citas</a>
+    <header class="color-header text-white py-3">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a class="title text-white h3" href="/">AURELIS</a>
+                <nav>
+                    <a class="text-white mx-3" href="/catalogo">Catalógo</a>
+                    <a class="text-white mx-3" href="/citas">Agendar citas</a>
+                </nav>
             </div>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <h2 class="text-center mb-5">Mis presentaciones y servicios♥</h2>
+        <div class="row flex-Main">
+            <!-- Las tarjetas se añadirán aquí dinámicamente -->
+        </div>
+        <section class="text-center my-5">
+            <a href="/citas" class="btn btn-primary">¡♦Reserva tu cita♦!</a>
         </section>
-      </header>
+    </main>
 
-      <Main>
-
-        <section>
-          <h1 class="test">¡Bienvenidos a mi Catalógo!</h1>
-            <h2 class="flex">Mis presentaciones y servicios♥</h2>
-            <div class="flex-Main">
-            
-                <img src="/images/1.jpg">
-                <img src="/images/acrilico.jpg">
-                <img src="/images/manicure.jpg">
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Imagen completa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" alt="Imagen" class="img-fluid">
+                </div>
             </div>
-            <div class="flex-Main2">
-                <img src="/images/manicures.jpg">
-                <img src="/images/manicure+pedicure.jpg">
-                <img class="orders" src="/images/montaje.jpg">
-            </div>
-        
-            <section class="nose">
-                <a href="/citas">¡♦Reserva tu cita♦!</a>
-            </section>
+        </div>
+    </div>
 
-        </section>
-
-
-
-      </Main>
-      <script src =  "/javascripts/Catalogo.js" ></script>
-
-</body>
-</html>
-
-
-
-<!-- Si no llegan a entender algo, escriban por el grupo que respondo de inmediato -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/javascripts/Catalogo.js"></script>

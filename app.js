@@ -7,8 +7,8 @@ import dbclients from "./routes/db.clients.routes.js";
 import dbpagos from "./routes/db.pagos.routes.js";
 import dbservicios from "./routes/db.servicios.routes.js";
 import dbstatus from "./routes/db.status.routes.js";
-import dbuser from "./routes/db.user.routes.js"
-
+import dbuser from "./routes/db.user.routes.js";
+import dbcita from "./routes/db.citas.routes.js";
 
 // Obtén la ruta del directorio actual
 const __filename = fileURLToPath(import.meta.url);
@@ -16,12 +16,12 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-//Static
+// Static
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Settings
-app.set("port",  4000);
+app.set("port", 4000);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
@@ -33,7 +33,9 @@ app.use(morgan("dev"));
 app.use('/', indexRouter);
 app.use("/api/clients", dbclients);
 app.use("/api/pagos", dbpagos);
-app.use("/api/servicios", dbservicios);
-app.use("/api/status", dbstatus)
-app.use("/api/user", dbuser)
+app.use("/api/servicios", dbservicios); // No es necesario añadir multer aquí
+app.use("/api/status", dbstatus);
+app.use("/api/user", dbuser);
+app.use("api/cita", dbcita);
+
 export default app;
