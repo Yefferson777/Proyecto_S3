@@ -53,7 +53,7 @@ footer{
 
 .flex-bottom{
   display: flex;
-  background-color: #bde0fe;
+  background-color: #ffff;
   padding: 77px;
   justify-content: space-between
 }
@@ -78,12 +78,13 @@ footer{
   
   text-align: center;
   flex-direction: row;
-  background-color: #bde0fe;
+  background-color: #ffff;
 }
 .center{
   font-size: 30px;
   text-align: -webkit-center;
   border-radius: 19px;
+  color: black;
   /* border: 5px #ffc8dd solid;
   background-color: #ffc8dd; */
   margin-left: 18px;

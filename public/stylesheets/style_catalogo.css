@@ -1,100 +1,89 @@
-/* aqui quise dividir los css para cada pagina */
+.color-header {
+    background-color: #cdb4db;
+    
+}
 
-*{
-    box-sizing: border-box;
+/* Estilos específicos */
+body {
     width: 100%;
-    padding: 5px;
-    margin: 0;
-    padding: 0;
-    
-  font-family: "Cabin", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: italic;
-  color: white;
- 
- 
-    }
-    
-a{
+  
+    color: #000; /* Color de texto por defecto */
+}
+
+a {
     text-decoration: none;
-    font-family: "Cabin", sans-serif;
     font-optical-sizing: auto;
     font-style: italic;
     font-size: x-large;
-     color: white;
-    }
-
-main{
-    margin-top: 120px;
+    color: white;
 }
 
-h2{
+main {
+    margin-top: 10px;
+}
+
+h2 {
     margin-bottom: 60px;
-    justify-content: space-around;
-    font-family: "Cabin", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-optical-sizing: auto;
     font-style: italic;
     background-color: #ffc8dd;
     width: 40%;
-    margin-left: 32%;
+    margin: 0 auto;
     border-radius: 20px;
     padding: 10px;
     text-align: center;
 }
 
-img{
+img {
     width: 15%;
-    height: 0%;
     border-radius: 30px;
 }
 
-.flex{
+.flex {
     display: flex;
-    }
-    
-.contenedor{
+}
+
+.contenedor {
     background-color: #cdb4db;
     display: flex;
     justify-content: space-around;
     padding: 10px;
-      }
-
-.title{
-     font-size: 28px;
-     margin-left: 55px;
-     letter-spacing: 2.5px;
 }
 
-.flex-Main{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    }
+.title {
+    font-size: 28px;
+    margin-left: 55px;
+    letter-spacing: 2.5px;
+}
 
-.flex-Main2{
+.flex-Main, .flex-Main2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+.flex-Main2 {
     margin-top: 50px;
 }
-    
-.nose{
+
+.nose {
     margin-top: 85px;
     text-align: center;
     border: 10px #bde0fe solid;
     width: 30%;
-    margin-left: 35%;
+    margin: 0 auto;
     border-radius: 50px;
     background: #bde0fe;
-    
 }
 
-.orders{
+.orders {
     height: 262px;
 }
 
-
-/* #cdb4db purle
+/* Colores de referencia
+#cdb4db purle
 #ffc8dd pink
 #bde0fe blue */

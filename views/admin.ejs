@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tus Servicios</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style_admin.css">
+</head>
+<body>
+    <header>
+        <img class="logo" src="/images/logo.png" alt="AurelisLogo">
+        <button class="abrir-menu" id="abrir" method="post"><i class="bi bi-list"></i></button>
+        <nav class="nav" id="nav">
+            <button class="cerrar-menu" id="cerrar" method="post"><i class="bi bi-x-circle"></i></button>
+            <ul class="nav-list">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Calendario</a></li>
+                <li><a href="#">Tus Servicios</a></li>
+                <li><a href="#">Estadisticas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1 class="text-center mb-4">Tus Servicios</h1>
+
+    <div class="d-flex justify-content-center mb-4">
+        <button class="btn btn-success" data-toggle="modal" data-target="#addServiceModal">Agregar Servicio</button>
+    </div>
+    <div class="container mt-5">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="serviceTableBody">
+                <!-- Las filas de servicios se añadirán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para agregar servicio -->
+    <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addServiceModalLabel">Agregar Servicio</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="serviceForm">
+                        <div class="form-group">
+                            <label for="name">Nombre del Servicio</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price_uni">Precio Unitario</label>
+                            <input type="number" class="form-control" id="price_uni" name="price_uni" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Estado</label>
+                            <input type="text" class="form-control" id="status" name="status" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Imagen</label>
+                            <input type="file" class="form-control-file" id="image" name="image" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Subir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar servicio -->
+    <div class="modal fade" id="editServiceModal" tabindex="-1" aria-labelledby="editServiceModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editServiceModalLabel">Editar Servicio</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editServiceForm">
+                        <input type="hidden" id="editServiceId" name="id">
+                        <div class="form-group">
+                            <label for="editName">Nombre del Servicio</label>
+                            <input type="text" class="form-control" id="editName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editPriceUni">Precio Unitario</label>
+                            <input type="number" class="form-control" id="editPriceUni" name="price_uni" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editStatus">Estado</label>
+                            <input type="text" class="form-control" id="editStatus" name="status" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editImage">Imagen</label>
+                            <input type="file" class="form-control-file" id="editImage" name="image">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/javascripts/admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const apiurl = 'http://localhost:4000/api/servicios';
+            const baseUrl = 'http://localhost:4000/';
+            const serviceTableBody = document.getElementById('serviceTableBody');
+
+            const loadServices = () => {
+                fetch(apiurl)
+                    .then(response => response.json())
+                    .then(data => {
+                        serviceTableBody.innerHTML = '';
+                        data.forEach(servicio => {
+                            const imageUrl = servicio.image ? `${baseUrl}${servicio.image}` : 'https://via.placeholder.com/150';
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${servicio.name}</td>
+                                <td>${servicio.price_uni}</td>
+                                <td>${servicio.status}</td>
+                                <td><img src="${imageUrl}" alt="${servicio.name}" class="img-thumbnail" style="width: 50px;"></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm edit-service-btn" data-id="${servicio.servicio_id}" data-toggle="modal" data-target="#editServiceModal">Editar</button>
+                                    <button class="btn btn-danger btn-sm delete-service-btn" data-id="${servicio.servicio_id}">Eliminar</button>
+                                </td>
+                            `;
+                            serviceTableBody.appendChild(row);
+                        });
+
+                        document.querySelectorAll('.edit-service-btn').forEach(button => {
+                            button.addEventListener('click', function() {
+                                const servicioId = this.getAttribute('data-id');
+                                const servicio = data.find(s => s.servicio_id == servicioId);
+                                document.getElementById('editServiceId').value = servicio.servicio_id;
+                                document.getElementById('editName').value = servicio.name;
+                                document.getElementById('editPriceUni').value = servicio.price_uni;
+                                document.getElementById('editStatus').value = servicio.status;
+                            });
+                        });
+
+                        document.querySelectorAll('.delete-service-btn').forEach(button => {
+                            button.addEventListener('click', function() {
+                                const servicioId = this.getAttribute('data-id');
+                                if (confirm('¿Estás seguro de que quieres eliminar este servicio?')) {
+                                    fetch(`${apiurl}/${servicioId}`, {
+                                        method: 'DELETE'
+                                    }).then(response => response.json())
+                                      .then(result => {
+                                          alert('Servicio eliminado');
+                                          loadServices();
+                                      });
+                                }
+                            });
+                        });
+                    });
+            };
+
+            loadServices();
+
+            document.getElementById('serviceForm').addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const formData = new FormData();
+                formData.append('name', document.getElementById('name').value);
+                formData.append('price_uni', document.getElementById('price_uni').value);
+                formData.append('status', document.getElementById('status').value);
+                formData.append('image', document.getElementById('image').files[0]);
+
+                try {
+                    const response = await fetch(apiurl, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+                    $('#addServiceModal').modal('hide');
+                    loadServices();
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
+
+            document.getElementById('editServiceForm').addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const servicioId = document.getElementById('editServiceId').value;
+                const formData = new FormData();
+                formData.append('name', document.getElementById('editName').value);
+                formData.append('price_uni', document.getElementById('editPriceUni').value);
+                formData.append('status', document.getElementById('editStatus').value);
+                if (document.getElementById('editImage').files.length > 0) {
+                    formData.append('image', document.getElementById('editImage').files[0]);
+                }
+
+                try {
+                    const response = await fetch(`${apiurl}/${servicioId}`, {
+                        method: 'PUT',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+                    $('#editServiceModal').modal('hide');
+                    loadServices();
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
