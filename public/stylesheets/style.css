@@ -5,23 +5,26 @@ tambien para el Main y footer */
 
 *{
 box-sizing: border-box;
-width: 100%;
 margin: 0;
 padding: 0;
 font-family: "Cabin", sans-serif;
 font-optical-sizing: auto;
 font-weight: 700;
 font-style: italic;
-color: white;
+
+color: #000 ;
+
 }
 
 a{
+  padding-right: 25px;
+  padding-left: 25px;
   text-decoration: none;
   font-family: "Cabin", sans-serif;
   font-optical-sizing: auto;
   font-style: italic;
   font-size: x-large;
-  color: white;
+  color: white !important;
 }
 
 Main{
@@ -67,8 +70,9 @@ footer{
 .contenedor{
   background-color: #cdb4db;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 10px;
+  
 }
 
 

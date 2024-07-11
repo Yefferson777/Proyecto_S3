@@ -37,6 +37,10 @@ router.get('/adminser', (req, res) => {
   res.render('adminser.ejs');
 });
 
+router.get('/adminstats', (req, res) => {
+  res.render('adminstats.ejs');
+});
+
 router.post('/login', (req, res) => {
   const user = req.body.usuario;
   const pass = req.body.clave;
