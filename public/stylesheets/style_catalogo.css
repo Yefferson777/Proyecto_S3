@@ -11,12 +11,15 @@ body {
 }
 
 a {
+    padding-right: 25px;
+    padding-left: 25px;
     text-decoration: none;
+    font-family: "Cabin", sans-serif;
     font-optical-sizing: auto;
     font-style: italic;
     font-size: x-large;
-    color: white;
-}
+    color: white !important;
+  }
 
 main {
     margin-top: 10px;
@@ -49,9 +52,9 @@ img {
 .contenedor {
     background-color: #cdb4db;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 10px;
-}
+}  
 
 .title {
     font-size: 28px;

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas de Pagos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Estadísticas de Pagos</h1>
+        <div class="form-group">
+            <label for="datePicker">Selecciona un día:</label>
+            <input type="date" id="datePicker" class="form-control" onchange="fetchData()">
+        </div>
+        <div class="table-responsive mt-4">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre del Titular</th>
+                        <th>Método de Pago</th>
+                        <th>Referencia</th>
+                        <th>Servicios Pagados</th>
+                        <th>Monto</th>
+                    </tr>
+                </thead>
+                <tbody id="statisticsTable">
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-5">
+            <canvas id="earningsChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('datePicker').valueAsDate = new Date();
+            fetchData();
+        });
+    
+        async function fetchData() {
+            const date = document.getElementById('datePicker').value;
+            if (!date) return;
+    
+            try {
+                const pagosResponse = await fetch(`http://localhost:4000/api/pagos/${date}`);
+                if (!pagosResponse.ok) {
+                    throw new Error('Error fetching data');
+                }
+    
+                const pagos = await pagosResponse.json();
+                displayStatistics(pagos);
+                fetchMonthlyEarnings();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    
+        function displayStatistics(pagos) {
+            const tableBody = document.getElementById('statisticsTable');
+            tableBody.innerHTML = '';
+    
+            pagos.forEach(pago => {
+                const servicios = pago.servicios.map(servicio => servicio.servicio_name).join(', ');
+    
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${pago.name}</td>
+                    <td>${pago.metodo}</td>
+                    <td>${pago.ref}</td>
+                    <td>${servicios || ''}</td>
+                    <td>$${pago.monto.toFixed(2)}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+    
+        async function fetchMonthlyEarnings() {
+            const date = document.getElementById('datePicker').value;
+            const [year, month] = date.split('-');
+    
+            try {
+                const response = await fetch(`http://localhost:4000/api/pagos/month/${year}-${month}`);
+    
+                if (!response.ok) {
+                    throw new Error('Error fetching monthly data');
+                }
+                const pagos = await response.json();
+    
+                const daysInMonth = new Date(year, month, 0).getDate();
+                const dailyEarnings = Array.from({ length: daysInMonth }, () => 0);
+    
+                pagos.forEach(pago => {
+                    const day = new Date(pago.date_at).getDate();
+                    dailyEarnings[day - 1] += pago.monto;
+                });
+    
+                displayEarningsChart(dailyEarnings);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    
+        let earningsChart;
+    
+        function displayEarningsChart(dailyEarnings) {
+            const ctx = document.getElementById('earningsChart').getContext('2d');
+            if (earningsChart) {
+                earningsChart.destroy();
+            }
+            const labels = dailyEarnings.map((_, i) => `Día ${i + 1}`);
+    
+            earningsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Ganancias diarias',
+                        data: dailyEarnings,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

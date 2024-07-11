@@ -3,67 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendar Cita</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container">
-        <h1 class="mt-5">Agendar Cita</h1>
-        <form id="citaForm" class="mb-5">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
-            </div>
-            <div class="form-group">
-                <label for="apellido">Apellido:</label>
-                <input type="text" class="form-control" id="apellido" name="apellido" required>
-            </div>
-            <div class="form-group">
-                <label for="numb">Número Telefónico:</label>
-                <input type="text" class="form-control" id="numb" name="numb" pattern="\d{12}" title="Debe ser un número de 12 dígitos" required>
-            </div>
-            <div class="form-group">
-                <label for="fecha">Fecha:</label>
-                <input type="date" class="form-control" id="fecha" name="fecha" required>
-            </div>
-            <div class="form-group">
-                <label for="hora">Hora:</label>
-                <input type="time" class="form-control" id="hora" name="hora" required>
-            </div>
-            <h2>Seleccionar Servicios</h2>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Seleccionar</th>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                    </tr>
-                </thead>
-                <tbody id="serviciosTableBody">
-                </tbody>
-            </table>
+    <title>Agendar Cita</title><link rel='stylesheet' href='/stylesheets/style.css' />
 
-            <h2>Información de Pago</h2>
-            <div class="form-group">
-                <label for="metodo">Método de Pago:</label>
-                <input type="text" class="form-control" id="metodo" name="metodo" required>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+</head>
+
+<body>
+    
+    <header >
+        <section class="contenedor">
+          <a class="title" href="/">AURELIS</a>
+            <div class="flex">
+              <a href="/catalogo">Catalógo</a>
+              <a href="/citas">Agendar citas</a>
+              <a href="/login" class="a">Iniciar Sesión</a>
             </div>
-            <div class="form-group">
-                <label for="name">Nombre del titular:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+        </section>
+      </header>
+  
+  
+  
+  
+      <Main>
+        <section class="contenido">
+
+            <div class="container">
+                <h1 class="mt-5">Agendar Cita</h1>
+                <form id="citaForm" class="mb-5">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="numb">Número Telefónico:</label>
+                        <input type="text" class="form-control" id="numb" name="numb" pattern="\d{12}" title="Debe ser un número de 12 dígitos" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Hora:</label>
+                        <input type="time" class="form-control" id="hora" name="hora" required>
+                    </div>
+                    <h2>Seleccionar Servicios</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Seleccionar</th>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody id="serviciosTableBody">
+                        </tbody>
+                    </table>
+        
+                    <h2>Información de Pago</h2>
+                    <div class="form-group">
+                        <label for="metodo">Método de Pago:</label>
+                        <input type="text" class="form-control" id="metodo" name="metodo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nombre del titular:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="monto">Monto:</label>
+                        <input type="number" class="form-control" id="monto" name="monto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ref">Referencia:</label>
+                        <input type="text" class="form-control" id="ref" name="ref" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="monto">Monto:</label>
-                <input type="number" class="form-control" id="monto" name="monto" required>
-            </div>
-            <div class="form-group">
-                <label for="ref">Referencia:</label>
-                <input type="text" class="form-control" id="ref" name="ref" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-    </div>
+  
+        </section>
+
+       
+  
+      </Main>
+
+  
+  <!--     por la parte de abajo de la pagina web me quede sin ideas, me gustaria que me den ideas o ustedes se
+      encarguen si gustan (J) -->
+  
+      <footer class="contenedor2">
+  
+        <section>
+          <div class="redes">
+            <img src="images/facebook.svg" height="45">
+            <img src="images/instagram.svg" height="45" >
+            <img src="images/tik-tok.svg"  height="45">
+          </div>  
+       </section>
+  
+      </footer>
+ 
 
     <script>
         document.addEventListener('DOMContentLoaded', async function() {
@@ -129,6 +176,9 @@
 
             const servicios = selectedServicios.map(servicio => servicio.id);
             const price = selectedServicios.reduce((acc, servicio) => acc + servicio.price, 0);
+            const dateNow = new Date().toISOString();
+
+        
 
             const data = {
                 nombre,
@@ -141,7 +191,8 @@
                 metodo,
                 name,
                 monto,
-                ref
+                ref,
+                fechapago: dateNow
             };
 
             try {
@@ -152,8 +203,9 @@
                     },
                     body: JSON.stringify(data)
                 });
-
+                console.log(response);
                 const result = await response.json();
+                
                 alert(result.message);
             } catch (error) {
                 console.error('Error:', error);

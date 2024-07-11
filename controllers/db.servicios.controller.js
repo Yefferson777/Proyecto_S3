@@ -1,4 +1,11 @@
 import { getConnection } from "./../database/database.js";
+import fs from 'fs';
+import path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 
 const getServicios = async (req, res) => {
     let connection;
@@ -72,6 +79,21 @@ const deleteServicios = async (req, res) => {
     try {
         const { id } = req.params;
         connection = await getConnection();
+          // Obtener el nombre de la imagen del servicio
+          const [servicio] = await connection.query("SELECT image FROM servicio WHERE servicio_id = ?", [id]);
+          if (servicio && servicio.image) {
+              const imagePath = path.join(__dirname, '../uploads', servicio.image);
+              
+              // Eliminar el archivo de la carpeta uploads
+              fs.unlink(imagePath, (err) => {
+                  if (err) {
+                      console.error(`Error al eliminar el archivo: ${err.message}`);
+                  } else {
+                      console.log(`Archivo ${servicio.image} eliminado exitosamente`);
+                  }
+              });
+          }
+  
         const result = await connection.query("DELETE FROM servicio WHERE servicio_id = ?", [id]);
         res.json(result);
     } catch (error) {

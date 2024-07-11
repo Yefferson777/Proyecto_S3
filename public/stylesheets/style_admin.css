@@ -48,6 +48,7 @@
 .nav-list a {
   color: #000;
   text-decoration: none;
+  padding: 10px;
 }
 
 .nav-list a:hover {
@@ -75,12 +76,13 @@ header{
     list-style-type: none;
     display: flex;
     gap: 1rem;
+  
 
 }
 .nav-list li{
     margin-right: 0;
     margin-left: 0;
-    padding: 2rem;
+    padding: 10px;
     border-radius: 15px;
     cursor: pointer;
 }
