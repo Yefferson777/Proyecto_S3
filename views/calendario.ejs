@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista de Citas del Día</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Citas del Día</h1>
+        <div id="citasList" class="mt-4">
+            <!-- Aquí se generará la tabla de citas -->
+        </div>
+    </div>
+
+    <!-- Modal para confirmar eliminación -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar esta cita?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDelete">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    fetchCitasDelDia();
+});
+async function fetchCitasDelDia() {
+    try {
+        const response = await fetch('http://localhost:4000/api/cita/' + getCurrentDate());
+        if (!response.ok) {
+            throw new Error('Error fetching citas');
+        }
+        const citas = await response.json();
+        console.log(citas); // Depuración: Verificar el contenido de 'citas'
+        displayCitas(citas);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+function displayCitas(citas) {
+    const citasList = document.getElementById('citasList');
+    console.log(citas)
+    console.log(citasList)
+    citasList.innerHTML = '';
+
+    citas.forEach(cita => {
+        const card = `
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">${cita.nombre} ${cita.apellido}</h5>
+                    <p class="card-text">Fecha: ${cita.fecha}, Hora: ${cita.hora}</p>
+                    <button class="btn btn-danger btn-sm float-right" onclick="confirmDelete(${cita.id})">Eliminar</button>
+                </div>
+            </div>
+        `;
+        citasList.innerHTML += card;
+    });
+}
+
+function confirmDelete(citaId) {
+    $('#deleteModal').modal('show');
+    $('#confirmDelete').off('click').on('click', function() {
+        deleteCita(citaId);
+    });
+}
+
+async function deleteCita(citaId) {
+    try {
+        const response = await fetch(`http://localhost:4000/api/cita/${citaId}`, {
+            method: 'DELETE'
+        });
+        if (!response.ok) {
+            throw new Error('Error deleting cita');
+        }
+        $('#deleteModal').modal('hide');
+        fetchCitasDelDia(); // Actualiza la lista de citas después de eliminar
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+function getCurrentDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let day = now.getDate();
+
+    if (month < 10) {
+        month = '0' + month;
+    }
+    if (day < 10) {
+        day = '0' + day;
+    }
+
+    return `${year}-${month}-${day}`;
+}
+
+    </script>
+</body>
+</html>

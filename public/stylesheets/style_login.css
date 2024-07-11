@@ -38,7 +38,7 @@ body{
     margin-bottom: 20%;
 }
 
-.formulario div input::placeholder{
+.formulario div input{
 
         font-size: 25px;
 }

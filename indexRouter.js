@@ -4,6 +4,7 @@ import { Router } from "express";
 
 const router = Router();
 router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/', (req, res) => {
   res.render('inicio', { title: 'Express' });
@@ -33,7 +34,11 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/adminser', (req, res) => {
+router.get('/calendario', (req, res) => {
+  res.render('calendario.ejs');
+});
+
+router.get('/adminserv', (req, res) => {
   res.render('adminser.ejs');
 });
 
@@ -42,14 +47,16 @@ router.get('/adminstats', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  const user = req.body.usuario;
-  const pass = req.body.clave;
-
-  if (user == process.env.USERS && pass == process.env.PASS){
-    res.redirect("/admin");
+  const { usuario, clave } = req.body;
+  console.log(usuario, clave);
+  if (usuario === process.env.USERS && clave === process.env.PASS) {
+    // Aquí deberías establecer alguna forma de sesión o token
+    res.redirect('/admin');
   } else {
-    res.redirect("/login");
+    // Puedes enviar un mensaje de error para mostrar en la página de login
+    res.render('login', { error: 'Usuario o contraseña incorrectos' });
   }
 });
+
 
 export default router;

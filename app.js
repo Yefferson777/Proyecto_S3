@@ -10,9 +10,12 @@ import dbstatus from "./routes/db.status.routes.js";
 import dbuser from "./routes/db.user.routes.js";
 import dbcita from "./routes/db.citas.routes.js";
 
+
 // Obtén la ruta del directorio actual
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+
 
 const app = express();
 
