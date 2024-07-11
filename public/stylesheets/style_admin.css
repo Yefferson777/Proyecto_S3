@@ -64,6 +64,7 @@ header{
     justify-content: space-between;
     padding: 1rem;
     background-color: #cdb4db;
+    z-index: 5;
 }
 
 .logo{
@@ -209,7 +210,7 @@ footer  {
     padding: 5px;
     color: #fff;
     display: flex;
-  
+    z-index: -1;
     border-radius: 10px;
     background-color: #e1bdff;
   }
@@ -658,6 +659,7 @@ footer  {
       min-height: 100vh;
       flex-direction: column;
       border-radius: 0;
+      z-index: -1;
     }
     .container .left {
       width: 100%;

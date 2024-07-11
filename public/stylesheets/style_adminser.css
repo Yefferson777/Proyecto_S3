@@ -11,6 +11,7 @@ header{
     justify-content: space-between;
     padding: 1rem;
     background-color: #cdb4db;
+    z-index: 2;
 }
 
 .logo{
@@ -128,6 +129,7 @@ p{
     width: 30%;
     height: 90%;
     right: 0;
+    z-index: -1;
   }
 
 .container{
