@@ -38,7 +38,7 @@ router.get('/calendario', (req, res) => {
   res.render('calendario.ejs');
 });
 
-router.get('/adminserv', (req, res) => {
+router.get('/adminser', (req, res) => {
   res.render('adminser.ejs');
 });
 
