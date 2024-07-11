@@ -36,6 +36,6 @@ app.use("/api/pagos", dbpagos);
 app.use("/api/servicios", dbservicios); // No es necesario añadir multer aquí
 app.use("/api/status", dbstatus);
 app.use("/api/user", dbuser);
-app.use("api/cita", dbcita);
+app.use("/api/cita", dbcita);
 
 export default app;

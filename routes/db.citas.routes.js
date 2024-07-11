@@ -6,3 +6,5 @@ const router = Router();
 router.post("/", CitaController.addCita);
 
 export default router;
+
+
