@@ -5,9 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadísticas de Pagos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="/stylesheets/style_adminstats.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
+
+
+
+    <header>
+        <img class="logo" src="/images/logo.png" alt="AurelisLogo">
+        <button class="abrir-menu" id="abrir" method="post"><i class="bi bi-list"></i></button>
+        <nav class="nav" id="nav">
+            <button class="cerrar-menu" id="cerrar" method="post"><i class="bi bi-x-circle"></i></button>
+            <ul class="nav-list">
+
+                <li>
+                    <a href="/admin">Inicio</a>
+                </li>
+                <li>
+                    <a href="/calendario">Calendario</a>
+                </li>
+                <li>
+                    <a href="/adminser">Tus Servicios</a>
+                </li>
+                <li>
+                    <a href="/adminstats">Estadisticas</a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+
+
+
+
+
     <div class="container mt-5">
         <h1 class="text-center">Estadísticas de Pagos</h1>
         <div class="form-group">
@@ -134,5 +170,8 @@
             });
         }
     </script>
+
+    <script src="/javascripts/admin.js"></script>
+
 </body>
 </html>
